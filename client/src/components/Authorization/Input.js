@@ -1,8 +1,8 @@
-import { useStyles } from "./style";
+import { useAuthStyles } from "./style";
 import { TextField } from "@material-ui/core";
 
 export const Input = ({ aria, type, name }) => {
-  const classes = useStyles();
+  const classes = useAuthStyles();
 
   return (
     <TextField

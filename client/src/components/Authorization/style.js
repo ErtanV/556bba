@@ -2,7 +2,7 @@ import { makeStyles } from "@material-ui/core";
 import backgroundPicture from "../../assets/converse.jpg";
 import chat from "../../assets/chat.svg";
 
-export const useStyles = makeStyles((theme) => ({
+export const useAuthStyles = makeStyles((theme) => ({
   // --- Login/Signup
   autorizationContainer: {
     display: "flex",
@@ -12,8 +12,6 @@ export const useStyles = makeStyles((theme) => ({
   },
 
   dataContainer: {
-    display: "flex",
-    flexDirection: "column",
     minWidth: "60%",
     [theme.breakpoints.down("xs")]: {
       width: "100vw",
@@ -21,14 +19,7 @@ export const useStyles = makeStyles((theme) => ({
   },
 
   formContainer: {
-    display: "flex",
-    justifyContent: "center",
     margin: "auto",
-  },
-
-  inputCard: {
-    display: "flex",
-    flexDirection: "column",
   },
 
   header: {
@@ -42,11 +33,7 @@ export const useStyles = makeStyles((theme) => ({
 
   // ---ImageConverse.js
   imageContainer: {
-    display: "flex",
-    flexDirection: "column",
     margin: "auto 0",
-    alignContent: "center",
-    justifyContent: "center",
     minHeight: "100vh",
     minWidth: "40%",
     backgroundSize: "cover",
@@ -57,10 +44,6 @@ export const useStyles = makeStyles((theme) => ({
   },
 
   textChat: {
-    display: "flex",
-    flexDirection: "column",
-    alignContent: "center",
-    justifyContent: "center",
     background: "linear-gradient(180deg, #2F84F9 0%, #86B9FF 100%) ",
     minHeight: "100vh",
     opacity: 0.85,
@@ -86,10 +69,6 @@ export const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("xs")]: {
       flexDirection: "column",
     },
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "flex-end",
-    alignItems: "center",
     padding: "30px",
   },
   textTop: {
@@ -118,11 +97,6 @@ export const useStyles = makeStyles((theme) => ({
     fontSize: "14px",
     marginTop: "40px",
     maxWidth: "150px",
-  },
-
-  submitButton: {
-    display: "flex",
-    justifyContent: "space-around",
   },
 
   link: {

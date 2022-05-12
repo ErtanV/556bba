@@ -6,16 +6,17 @@ import {
   FormControl,
   FormHelperText,
 } from "@material-ui/core";
-import { useStyles } from "./style";
+import { useAuthStyles } from "./style";
 import { ImageConverse } from "./ImageConverse";
 import { Input } from "./Input";
 import { SubmitButton } from "./Buttons";
 import { SwitchForm } from "./FormControl";
 import { Label } from "./FormControl";
+import FormInput from "./FormInput";
 
 const Signup = ({ user, register }) => {
   const history = useHistory();
-  const classes = useStyles();
+  const classes = useAuthStyles();
 
   const [formErrorMessage, setFormErrorMessage] = useState({});
 
@@ -42,16 +43,20 @@ const Signup = ({ user, register }) => {
   return (
     <Grid className={classes.autorizationContainer}>
       <ImageConverse />
-      <Grid className={classes.dataContainer}>
+      <Grid container direction="column" className={classes.dataContainer}>
         <SwitchForm
           message={"Already have an account?"}
           href={"/login"}
           to={"/login"}
           name={"Login"}
         />
-        <Grid className={classes.formContainer}>
+        <Grid
+          container
+          justifyContent="center"
+          className={classes.formContainer}
+        >
           <form onSubmit={handleRegister}>
-            <Grid className={classes.inputCard}>
+            <Grid container direction="column">
               <Grid>
                 <Typography
                   className={classes.header}
@@ -65,30 +70,26 @@ const Signup = ({ user, register }) => {
                   <Input aria={"username"} name={"username"} type={"text"} />
                 </FormControl>
               </Grid>
-              <Grid>
-                <FormControl>
-                  <Label name={"E-mail address"} />
-                  <Input
-                    aria={"e-mail address"}
-                    name={"email"}
-                    type={"email"}
-                  />
-                </FormControl>
-              </Grid>
-              <Grid>
-                <FormControl error={!!formErrorMessage.confirmPassword}>
-                  <Label name={"Password"} />
-                  <Input
-                    aria={"password"}
-                    name={"password"}
-                    type={"password"}
-                  />
-                  <FormHelperText>
-                    {formErrorMessage.confirmPassword}
-                  </FormHelperText>
-                </FormControl>
-              </Grid>
-              <Grid className={classes.submitButton}>
+
+              <FormInput
+                labelName="E-mail address"
+                aria="e-mail address"
+                name="email"
+                type="email"
+              />
+              <FormInput
+                helperText={!!formErrorMessage.confirmPassword}
+                labelName={"Password"}
+                aria={"password"}
+                name={"password"}
+                type={"password"}
+              >
+                <FormHelperText>
+                  {formErrorMessage.confirmPassword}
+                </FormHelperText>
+                ;
+              </FormInput>
+              <Grid container item justifyContent="space-around">
                 <SubmitButton name={"Create"} />
               </Grid>
             </Grid>

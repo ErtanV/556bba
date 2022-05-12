@@ -1,16 +1,15 @@
 import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { Grid, Typography, FormControl } from "@material-ui/core";
-import { useStyles } from "./style";
+import { Grid, Typography } from "@material-ui/core";
+import { useAuthStyles } from "./style";
 import { ImageConverse } from "./ImageConverse";
-import { Input } from "./Input";
 import { SubmitButton } from "./Buttons";
 import { SwitchForm } from "./FormControl";
-import { Label } from "./FormControl";
+import FormInput from "./FormInput";
 
 const Login = ({ user, login }) => {
   const history = useHistory();
-  const classes = useStyles();
+  const classes = useAuthStyles();
 
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -29,16 +28,20 @@ const Login = ({ user, login }) => {
   return (
     <Grid className={classes.autorizationContainer}>
       <ImageConverse />
-      <Grid className={classes.dataContainer}>
+      <Grid container direction="column" className={classes.dataContainer}>
         <SwitchForm
           message={"Don't have an account?"}
           href={"/register"}
           to={"/register"}
           name={"Create account"}
         />
-        <Grid className={classes.formContainer}>
+        <Grid
+          container
+          justifyContent="center"
+          className={classes.formContainer}
+        >
           <form onSubmit={handleLogin}>
-            <Grid className={classes.inputCard}>
+            <Grid container direction="column">
               <Grid>
                 <Typography
                   className={classes.header}
@@ -48,27 +51,19 @@ const Login = ({ user, login }) => {
                   Welcome back!
                 </Typography>
               </Grid>
-              <Grid>
-                <FormControl>
-                  <Label name={"E-mail address"} />
-                  <Input
-                    aria={"e-mail address"}
-                    name={"email"}
-                    type={"email"}
-                  />
-                </FormControl>
-              </Grid>
-              <Grid>
-                <FormControl>
-                  <Label name={"Password"} />
-                  <Input
-                    aria={"password"}
-                    name={"password"}
-                    type={"password"}
-                  />
-                </FormControl>
-              </Grid>
-              <Grid className={classes.submitButton}>
+              <FormInput
+                labelName={"E-mail address"}
+                aria={"e-mail address"}
+                name={"email"}
+                type={"email"}
+              />
+              <FormInput
+                labelName={"Password"}
+                aria={"password"}
+                name={"password"}
+                type={"password"}
+              />
+              <Grid container item justifyContent="space-around">
                 <SubmitButton name={"Login"} />
               </Grid>
             </Grid>

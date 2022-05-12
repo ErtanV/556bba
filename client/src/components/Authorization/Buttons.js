@@ -1,8 +1,8 @@
 import { Button } from "@material-ui/core";
-import { useStyles } from "./style";
+import { useAuthStyles } from "./style";
 
 export const SubmitButton = ({ name }) => {
-  const classes = useStyles();
+  const classes = useAuthStyles();
 
   return (
     <Button
@@ -17,7 +17,7 @@ export const SubmitButton = ({ name }) => {
 };
 
 export const RedirectButton = ({ name }) => {
-  const classes = useStyles();
+  const classes = useAuthStyles();
 
   return <Button className={classes.redirectBtn}>{name}</Button>;
 };
