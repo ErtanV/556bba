@@ -1,6 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Box, Typography } from "@material-ui/core";
+import { useMessageStyles } from "./messagesStyle";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -21,55 +22,31 @@ const useStyles = makeStyles(() => ({
     padding: 8,
     fontWeight: "bold",
   },
-  textWrap: {
-    wordWrap: "break-word",
-    maxWidth: "150px",
-  },
   bubble: {
     margin: "5px 0",
     background: "#F4F6FA",
     borderRadius: "10px 10px 0 10px",
   },
-  bubbleNone: {
-    background: "none",
-  },
-  attachments: {
-    margin: "0 0 0 10px",
-    width: "150px",
-    height: "120px",
-    borderRadius: "8px",
-    borderBottomRightRadius: "0px",
-  },
-  singleAttachment: {
-    margin: "0px",
-  },
-  AttachWithText: {
-    borderBottomLeftRadius: "0px",
-    borderBottomRightRadius: "0px",
-  },
-  multipleAttachment: {
-    width: "100px",
-    height: "70px",
-    margin: "0 0 0 5px",
-  },
 }));
 
 const SenderBubble = ({ time, text, attachments }) => {
   const classes = useStyles();
+  const messageClasses = useMessageStyles();
 
   if (attachments?.length === 1 && text?.length === 0) {
     return (
       <Box className={classes.root}>
         <Typography className={classes.date}>{time}</Typography>
-        <Box className={[classes.bubble, classes.bubbleNone].join(" ")}>
-          {attachments?.map((val, index) => (
+        <Box className={[classes.bubble, messageClasses.bubbleNone].join(" ")}>
+          {attachments?.map((val) => (
             <img
               src={val}
-              key={index}
+              key={val}
               alt="attachments"
-              className={[classes.attachments, classes.singleAttachment].join(
-                " "
-              )}
+              className={[
+                messageClasses.attachments,
+                messageClasses.singleAttachment,
+              ].join(" ")}
             />
           ))}
         </Box>
@@ -83,15 +60,16 @@ const SenderBubble = ({ time, text, attachments }) => {
         <Box className={classes.bubble}>
           <Typography className={classes.text}>{text}</Typography>
         </Box>
-        <Box className={[classes.bubble, classes.bubbleNone].join(" ")}>
-          {attachments?.map((val, index) => (
+        <Box className={[classes.bubble, messageClasses.bubbleNone].join(" ")}>
+          {attachments?.map((val) => (
             <img
               src={val}
-              key={index}
+              key={val}
               alt="attachments"
-              className={[classes.attachments, classes.multipleAttachment].join(
-                " "
-              )}
+              className={[
+                messageClasses.attachments,
+                messageClasses.multipleAttachment,
+              ].join(" ")}
             />
           ))}
         </Box>
@@ -105,19 +83,21 @@ const SenderBubble = ({ time, text, attachments }) => {
       <Box className={classes.root}>
         <Typography className={classes.date}>{time}</Typography>
         <Box className={classes.bubble}>
-          {attachments?.map((val, index) => (
+          {attachments?.map((val) => (
             <img
               src={val}
-              key={index}
+              key={val}
               alt="attachments"
               className={[
-                classes.attachments,
-                classes.AttachWithText,
-                classes.singleAttachment,
+                messageClasses.attachments,
+                messageClasses.AttachWithText,
+                messageClasses.singleAttachment,
               ].join(" ")}
             />
           ))}
-          <Typography className={[classes.text, classes.textWrap].join(" ")}>
+          <Typography
+            className={[classes.text, messageClasses.textWrap].join(" ")}
+          >
             {text}
           </Typography>
         </Box>
@@ -129,15 +109,16 @@ const SenderBubble = ({ time, text, attachments }) => {
     return (
       <Box className={classes.root}>
         <Typography className={classes.date}>{time}</Typography>
-        <Box className={[classes.bubble, classes.bubbleNone].join(" ")}>
-          {attachments?.map((val, index) => (
+        <Box className={[classes.bubble, messageClasses.bubbleNone].join(" ")}>
+          {attachments?.map((val) => (
             <img
               src={val}
-              key={index}
+              key={val}
               alt="attachments"
-              className={[classes.attachments, classes.multipleAttachment].join(
-                " "
-              )}
+              className={[
+                messageClasses.attachments,
+                messageClasses.multipleAttachment,
+              ].join(" ")}
             />
           ))}
         </Box>

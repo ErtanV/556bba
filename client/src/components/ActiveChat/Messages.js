@@ -23,6 +23,7 @@ const Messages = (props) => {
             key={message.id}
             text={message.text}
             time={time}
+            attachments={message.attachments}
             otherUser={otherUser}
           />
         );

@@ -2,7 +2,6 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Box } from "@material-ui/core";
 import { Input, Header, Messages } from "./index";
-import { CloudinaryContext } from "cloudinary-react";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -47,9 +46,7 @@ const ActiveChat = ({
           />
           <Box className={classes.chatContainer}>
             {user && (
-              <CloudinaryContext
-                cloudName={process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}
-              >
+              <>
                 <Messages
                   messages={conversation.messages}
                   otherUser={conversation.otherUser}
@@ -61,7 +58,7 @@ const ActiveChat = ({
                   user={user}
                   postMessage={postMessage}
                 />
-              </CloudinaryContext>
+              </>
             )}
           </Box>
         </>

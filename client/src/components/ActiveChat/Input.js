@@ -4,7 +4,6 @@ import { FormControl, TextField } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import AttachFileIcon from "@material-ui/icons/AttachFile";
 import InputAdornment from "@material-ui/core/InputAdornment";
-import { Image } from "cloudinary-react";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -103,10 +102,11 @@ const Input = ({ otherUser, conversationId, user, postMessage }) => {
             disableUnderline: true,
             endAdornment: (
               <InputAdornment position="start">
-                {img.map((val) => (
-                  <Image
+                {img?.map((val) => (
+                  <img
+                    src={val.data?.url}
                     key={val.data.asset_id}
-                    publicId={val.data.public_id}
+                    alt="attachments"
                     className={classes.imagePreview}
                   />
                 ))}
