@@ -13,12 +13,6 @@ const useStyles = makeStyles(() => ({
     marginRight: 11,
     marginTop: 6,
   },
-  usernameDate: {
-    fontSize: 11,
-    color: "#BECCE2",
-    fontWeight: "bold",
-    marginBottom: 5,
-  },
   bubble: {
     backgroundImage: "linear-gradient(225deg, #6CC1FF 0%, #3A8DFF 100%)",
     borderRadius: "0 10px 10px 10px",
@@ -29,12 +23,8 @@ const useStyles = makeStyles(() => ({
     flexDirection: "column",
     alignItems: "flex-start",
   },
-  text: {
-    fontSize: 14,
-    fontWeight: "bold",
+  textOther: {
     color: "#FFFFFF",
-    letterSpacing: -0.2,
-    padding: 8,
   },
 }));
 
@@ -51,7 +41,7 @@ const OtherUserBubble = ({ text, time, otherUser, attachments }) => {
           className={classes.avatar}
         />
         <Box>
-          <Typography className={classes.usernameDate}>
+          <Typography className={messageClasses.date}>
             {otherUser.username} {time}
           </Typography>
           <Box
@@ -85,7 +75,11 @@ const OtherUserBubble = ({ text, time, otherUser, attachments }) => {
         />
         <Box className={classes.otherBubble}>
           <Box className={classes.bubble}>
-            <Typography className={classes.text}>{text}</Typography>
+            <Typography
+              className={[classes.textOther, messageClasses.text].join(" ")}
+            >
+              {text}
+            </Typography>
           </Box>
           <Box
             className={[classes.bubble, messageClasses.bubbleNone].join(" ")}
@@ -103,7 +97,7 @@ const OtherUserBubble = ({ text, time, otherUser, attachments }) => {
               />
             ))}
           </Box>
-          <Typography className={classes.usernameDate}>
+          <Typography className={messageClasses.date}>
             {otherUser.username} {time}
           </Typography>
         </Box>
@@ -120,7 +114,7 @@ const OtherUserBubble = ({ text, time, otherUser, attachments }) => {
           className={classes.avatar}
         />
         <Box>
-          <Typography className={classes.usernameDate}>
+          <Typography className={messageClasses.date}>
             {otherUser.username} {time}
           </Typography>
           <Box className={classes.bubble}>
@@ -137,7 +131,11 @@ const OtherUserBubble = ({ text, time, otherUser, attachments }) => {
               />
             ))}
             <Typography
-              className={[classes.text, messageClasses.textWrap].join(" ")}
+              className={[
+                classes.textOther,
+                messageClasses.textWrap,
+                messageClasses.text,
+              ].join(" ")}
             >
               {text}
             </Typography>
@@ -156,7 +154,7 @@ const OtherUserBubble = ({ text, time, otherUser, attachments }) => {
           className={classes.avatar}
         />
         <Box>
-          <Typography className={classes.usernameDate}>
+          <Typography className={messageClasses.date}>
             {otherUser.username} {time}
           </Typography>
           <Box
@@ -188,11 +186,15 @@ const OtherUserBubble = ({ text, time, otherUser, attachments }) => {
         className={classes.avatar}
       />
       <Box>
-        <Typography className={classes.usernameDate}>
+        <Typography className={messageClasses.date}>
           {otherUser.username} {time}
         </Typography>
         <Box className={classes.bubble}>
-          <Typography className={classes.text}>{text}</Typography>
+          <Typography
+            className={[classes.textOther, messageClasses.text].join(" ")}
+          >
+            {text}
+          </Typography>
         </Box>
       </Box>
     </Box>

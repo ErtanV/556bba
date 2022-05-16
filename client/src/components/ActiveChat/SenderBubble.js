@@ -9,18 +9,8 @@ const useStyles = makeStyles(() => ({
     flexDirection: "column",
     alignItems: "flex-end",
   },
-  date: {
-    fontSize: 11,
-    color: "#BECCE2",
-    fontWeight: "bold",
-    marginBottom: 5,
-  },
-  text: {
-    fontSize: 14,
+  textSender: {
     color: "#91A3C0",
-    letterSpacing: -0.2,
-    padding: 8,
-    fontWeight: "bold",
   },
   bubble: {
     margin: "5px 0",
@@ -36,7 +26,7 @@ const SenderBubble = ({ time, text, attachments }) => {
   if (attachments?.length === 1 && text?.length === 0) {
     return (
       <Box className={classes.root}>
-        <Typography className={classes.date}>{time}</Typography>
+        <Typography className={messageClasses.date}>{time}</Typography>
         <Box className={[classes.bubble, messageClasses.bubbleNone].join(" ")}>
           {attachments?.map((val) => (
             <img
@@ -58,7 +48,11 @@ const SenderBubble = ({ time, text, attachments }) => {
     return (
       <Box className={classes.root}>
         <Box className={classes.bubble}>
-          <Typography className={classes.text}>{text}</Typography>
+          <Typography
+            className={[classes.textSender, messageClasses.text].join(" ")}
+          >
+            {text}
+          </Typography>
         </Box>
         <Box className={[classes.bubble, messageClasses.bubbleNone].join(" ")}>
           {attachments?.map((val) => (
@@ -73,7 +67,7 @@ const SenderBubble = ({ time, text, attachments }) => {
             />
           ))}
         </Box>
-        <Typography className={classes.date}>{time}</Typography>
+        <Typography className={messageClasses.date}>{time}</Typography>
       </Box>
     );
   }
@@ -81,7 +75,7 @@ const SenderBubble = ({ time, text, attachments }) => {
   if (attachments?.length === 1 && text?.length > 0) {
     return (
       <Box className={classes.root}>
-        <Typography className={classes.date}>{time}</Typography>
+        <Typography className={messageClasses.date}>{time}</Typography>
         <Box className={classes.bubble}>
           {attachments?.map((val) => (
             <img
@@ -96,7 +90,11 @@ const SenderBubble = ({ time, text, attachments }) => {
             />
           ))}
           <Typography
-            className={[classes.text, messageClasses.textWrap].join(" ")}
+            className={[
+              classes.textSender,
+              messageClasses.textWrap,
+              messageClasses.text,
+            ].join(" ")}
           >
             {text}
           </Typography>
@@ -108,7 +106,7 @@ const SenderBubble = ({ time, text, attachments }) => {
   if (attachments?.length > 1 && text?.length === 0) {
     return (
       <Box className={classes.root}>
-        <Typography className={classes.date}>{time}</Typography>
+        <Typography className={messageClasses.date}>{time}</Typography>
         <Box className={[classes.bubble, messageClasses.bubbleNone].join(" ")}>
           {attachments?.map((val) => (
             <img
@@ -129,9 +127,13 @@ const SenderBubble = ({ time, text, attachments }) => {
   return (
     <Box className={classes.root}>
       <Box className={classes.root}>
-        <Typography className={classes.date}>{time}</Typography>
+        <Typography className={messageClasses.date}>{time}</Typography>
         <Box className={classes.bubble}>
-          <Typography className={classes.text}>{text}</Typography>
+          <Typography
+            className={[classes.textSender, messageClasses.text].join(" ")}
+          >
+            {text}
+          </Typography>
         </Box>
       </Box>
     </Box>

@@ -37,4 +37,16 @@ export const useMessageStyles = makeStyles(() => ({
     wordWrap: "break-word",
     maxWidth: "150px",
   },
+  date: {
+    fontSize: 11,
+    color: "#BECCE2",
+    fontWeight: "bold",
+    marginBottom: 5,
+  },
+  text: {
+    fontSize: 14,
+    fontWeight: "bold",
+    letterSpacing: -0.2,
+    padding: 8,
+  },
 }));
